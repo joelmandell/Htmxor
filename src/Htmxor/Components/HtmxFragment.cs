@@ -43,5 +43,5 @@ public class HtmxFragment : ConditionalComponentBase
 	/// <inheritdoc/>
 	public override bool ShouldOutput([NotNull] HtmxContext context, int directConditionalChildren, int conditionalChildren)
 		=> (RenderDuringStandardRequest && context.Request.RoutingMode is RoutingMode.Standard)
-		|| (Match?.Invoke(context.Request) ?? true);
+		|| ((Match?.Invoke(context.Request) ?? true && context.Request.RoutingMode is RoutingMode.Direct));
 }
